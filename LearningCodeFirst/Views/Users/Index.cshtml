@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LearningCodeFirst.Models.User>
+
+@{
+    ViewData["Title"] = "Início";
+}
+
+<h2>Início</h2>
+
+<p class="text-right">
+    <a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus-circle fa-fw"></i> Criar novo</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sobrenome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit fa-fw fa-lg"></i></a> 
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info-circle fa-fw fa-lg"></i></a> 
+                <a asp-action="Delete" asp-route-id="@item.Id"><i style="color:red" class="fas fa-trash fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
